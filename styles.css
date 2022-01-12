@@ -1,0 +1,245 @@
+:root {
+  --standard-gradient: linear-gradient(45deg, #d5d5ff, #a8a8ff);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+  background-color: #faf7ff;
+}
+
+body input,
+body button {
+  font-family: inherit;
+}
+
+header {
+  padding: 24px 8px;
+  background: var(--standard-gradient);
+}
+
+h1 {
+  margin: 12px 0;
+}
+
+h2 {
+  margin: 12px 0;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 400px) {
+  h1 {
+    margin: 6px 0;
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    margin: 6px 0;
+    font-size: 1rem;
+  }
+}
+
+main {
+  padding: 36px 0;
+}
+
+#section-setup {
+  display: flex;
+  flex-direction: column;
+}
+
+#container-players-tiles {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 550px) {
+  #container-players-tiles {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.player-tile {
+  border-radius: 2px;
+  margin: 16px;
+  padding: 14px;
+  width: 14rem;
+  background-color: #e6e6ff;
+  box-shadow: 1px 2px 2px 0 rgba(0, 0, 100, 0.4);
+}
+
+.player-tile p {
+  margin: 6px 0;
+}
+
+.player-title {
+  font-weight: bold;
+}
+
+.player-name {
+  font-weight: bold;
+  color: #5900ff;
+  font-size: 1.2rem;
+}
+
+.player-symbol {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.button {
+  align-self: center;
+  padding: 6px 16px;
+  margin: 0 14px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-passive {
+  color: #632abe;
+  background-color: transparent;
+}
+
+.btn-active {
+  color: white;
+  background-color: #632abe;
+  transition: background-color .5s;
+}
+
+@media (any-hover: hover) {
+  .button:hover {
+    cursor: pointer;
+  }
+
+  .btn-active:hover {
+    background-color: #764bbb;
+  }
+}
+
+.btn-active:active {
+  transform: translate(1px, 1px);
+}
+
+#player-name-form {
+  display: none;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  padding: 12px;
+  border-radius: 8px;
+  left: calc(50vw - 15rem);
+  width: 30rem;
+  background-color: white;
+}
+
+.player-name-form-header {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 3px 0;
+}
+
+.player-name-form-subheader {
+  display: block;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin: 3px 0;
+}
+
+#f-player-name.invalid-value {
+  background-color: rgb(255, 184, 184);
+}
+
+#player-name-form ul {
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+  text-align: start;
+}
+
+#player-name-form ul li::before {
+  content: "X";
+  margin-right: 16px;
+  color: red;
+  font-weight: bold;
+}
+
+#player-name-form ul li.name-requirement-completed::before {
+  content: "V";
+  margin-right: 16px;
+  color: green;
+  font-weight: bold;
+}
+
+#player-name-form-container-buttons {
+  margin: 0 auto;
+  display: flex;
+  width: min-content;
+}
+
+#section-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-over {
+  display: none;
+  margin: 16px 0;
+  border-radius: 4px;
+  padding: 22px 48px;
+  width: 40rem;
+  color: white;
+  background-color: rgb(38, 10, 65);
+}
+
+#game-over p {
+  margin: 0;
+}
+
+#game-over > p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#game-field {
+  margin: 16px 0;
+  display: grid;
+  grid-template-columns: 72px 72px 72px;
+  grid-template-rows: 72px 72px 72px;
+  gap: 8px;
+}
+
+#game-field > div {
+  background-color: lightblue;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-field > div:hover {
+  background-color: rgb(87, 77, 170);
+  cursor: pointer;
+}
+
+#game-field > div.checked-tile {
+  background-color: rgb(87, 77, 170);
+}
+
+footer {
+  padding: 8px;
+  text-align: end;
+  background: var(--standard-gradient);
+}

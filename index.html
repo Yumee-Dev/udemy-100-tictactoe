@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Udemy 100 Days of Code - Tic-Tac-Toe Milestone Project</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Play Tic, Tac, Toe</h1>
+        <h2>Built with HTML, CSS, JavaScript and - of course - lots of love!</h2>
+    </header>
+
+    <main>
+        <section id="section-setup">
+            <div id="container-players-tiles">
+                <div class="player-tile">
+                    <p class="player-title">Player 1</p>
+                    <p class="player-name" id="player1-name">Dipper</p>
+                    <p class="player-symbol">X</p>
+                    <button id="player1-edit-name" class="button btn-passive">Edit</button>
+                </div>
+                <div class="player-tile">
+                    <p class="player-title">Player 2</p>
+                    <p class="player-name" id="player2-name">Mable</p>
+                    <p class="player-symbol">O</p>
+                    <button id="player2-edit-name" class="button btn-passive">Edit</button>
+                </div>
+            </div>
+            <div id="player-name-form">
+                <p class="player-name-form-header">Choose your name</p>
+                <label for="f-player-name" class="player-name-form-subheader">Player name</label>
+                <input type="text" maxlength="16" name="player-name" id="f-player-name">
+                <ul>
+                    <li id="check-length" class="name-requirement-completed">Contains at least 2 characters</li>                    
+                    <li id="check-chars" class="name-requirement-completed">Contains only letters and dashes</li>
+                    <li id="check-first" class="name-requirement-completed">The first character is a capital letter</li>
+                    <li id="check-last" class="name-requirement-completed">The last character is a letter</li>
+                </ul>
+                <div id="player-name-form-container-buttons">
+                    <button id="btn-cancel" class="button btn-passive">Cancel</button>
+                    <button id="btn-confirm" class="button btn-active">Confirm</button>
+                </div>
+            </div>
+            <button id="btn-start-new-game" class="button btn-active">Start New Game</button>
+        </section>
+        <section id="section-game">
+            <div id="game-over">
+                <p>You won, Player 1!</p>
+                <p>Click "Start New Game" above to start a new game!</p>
+            </div>
+            <p id="its-your-turn">It's your turn <strong id="player-turn-name">Dipper</strong>!</p>
+            <div id="game-field">
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>&copy; Dmitriy Trifonov</span>
+    </footer>
+</body>
+
+</html>
