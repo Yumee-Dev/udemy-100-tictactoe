@@ -27,9 +27,7 @@ for (let i = 0; i < 3; i++) {
     }
 }
 
-backdrop.addEventListener('click', (event) => {
-    btnCancel.click();
-});
+backdrop.addEventListener('click', (event) => btnCancel.click());
 
 for (let i = 0; i < 2; i++) {
     playerEditNames[i].addEventListener('click', (event) => {

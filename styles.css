@@ -111,6 +111,7 @@ main {
   border: none;
   border-radius: 4px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-passive {
@@ -125,10 +126,6 @@ main {
 }
 
 @media (any-hover: hover) {
-  .button:hover {
-    cursor: pointer;
-  }
-
   .btn-active:hover {
     background-color: #764bbb;
   }
@@ -240,8 +237,8 @@ main {
 #game-field {
   margin: 16px 0;
   display: grid;
-  grid-template-columns: 72px 72px 72px;
-  grid-template-rows: 72px 72px 72px;
+  grid-template-columns: repeat(3, 72px);
+  grid-template-rows: repeat(3, 72px);
   gap: 8px;
 }
 
@@ -253,17 +250,21 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+#game-field > div.checked-tile {
+  background-color: rgb(87, 77, 170);
 }
 
 @media (any-hover: hover) {
   #game-field > div:hover {
     background-color: rgb(87, 77, 170);
-    cursor: pointer;
   }
-}
 
-#game-field > div.checked-tile {
-  background-color: rgb(87, 77, 170);
+  #game-field > div.checked-tile:hover {
+    cursor: default;
+  }
 }
 
 footer {
