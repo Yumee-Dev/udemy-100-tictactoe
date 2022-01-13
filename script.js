@@ -1,3 +1,4 @@
+const backdrop = document.getElementById('backdrop');
 const playerNames = [document.getElementById('player1-name'), document.getElementById('player2-name')];
 const playerEditNames = [document.getElementById('player1-edit-name'), document.getElementById('player2-edit-name')];
 const playerNameForm = document.getElementById('player-name-form');
@@ -26,10 +27,15 @@ for (let i = 0; i < 3; i++) {
     }
 }
 
+backdrop.addEventListener('click', (event) => {
+    btnCancel.click();
+});
+
 for (let i = 0; i < 2; i++) {
     playerEditNames[i].addEventListener('click', (event) => {
         editedPlayer = i;
         playerNameForm.style.display = 'flex';
+        backdrop.style.display = 'block';
         fPlayerName.value = playerNames[i].textContent;
     });
 }
@@ -74,6 +80,7 @@ btnCancel.addEventListener('click', (event) => {
     checkFirst.classList.add('name-requirement-completed');
     checkLast.classList.add('name-requirement-completed');
     playerNameForm.style.display = 'none';
+    backdrop.style.display = 'none';
 });
 
 btnConfirm.addEventListener('click', (event) => {
@@ -81,6 +88,7 @@ btnConfirm.addEventListener('click', (event) => {
         playerNames[editedPlayer].textContent = fPlayerName.value.trim();
         sPlayerNames[editedPlayer] = fPlayerName.value.trim();
         playerNameForm.style.display = 'none';
+        backdrop.style.display = 'none';
     } else {
         fPlayerName.classList.add('invalid-value');
     }
