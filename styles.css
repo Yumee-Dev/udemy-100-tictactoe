@@ -245,9 +245,11 @@ main {
   align-items: center;
 }
 
-#game-field > div:hover {
-  background-color: rgb(87, 77, 170);
-  cursor: pointer;
+@media (any-hover: hover) {
+  #game-field > div:hover {
+    background-color: rgb(87, 77, 170);
+    cursor: pointer;
+  }
 }
 
 #game-field > div.checked-tile {
