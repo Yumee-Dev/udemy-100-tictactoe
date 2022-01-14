@@ -28,29 +28,32 @@
                     <p class="player-title">Player 1</p>
                     <p class="player-name" id="player1-name">Dipper</p>
                     <p class="player-symbol">X</p>
-                    <button id="player1-edit-name" class="button btn-passive">Edit</button>
+                    <button id="player1-edit-name" class="button btn-passive" data-playerid="0">Edit</button>
                 </div>
                 <div class="player-tile">
                     <p class="player-title">Player 2</p>
                     <p class="player-name" id="player2-name">Mable</p>
                     <p class="player-symbol">O</p>
-                    <button id="player2-edit-name" class="button btn-passive">Edit</button>
+                    <button id="player2-edit-name" class="button btn-passive" data-playerid="1">Edit</button>
                 </div>
             </div>
             <div id="player-name-form">
                 <p class="player-name-form-header">Choose your name</p>
-                <label for="f-player-name" class="player-name-form-subheader">Player name</label>
-                <input type="text" maxlength="16" name="player-name" id="f-player-name">
-                <ul>
-                    <li id="check-length" class="name-requirement-completed">Contains at least 2 characters</li>                    
-                    <li id="check-chars" class="name-requirement-completed">Contains only letters and dashes</li>
-                    <li id="check-first" class="name-requirement-completed">The first character is a capital letter</li>
-                    <li id="check-last" class="name-requirement-completed">The last character is a letter</li>
-                </ul>
-                <div id="player-name-form-container-buttons">
-                    <button id="btn-cancel" class="button btn-passive">Cancel</button>
-                    <button id="btn-confirm" class="button btn-active">Confirm</button>
-                </div>
+                <form>
+                    <label for="f-player-name" class="player-name-form-subheader">Player name</label>
+                    <input type="text" maxlength="16" name="player-name" id="f-player-name">
+                    <ul>
+                        <li id="check-length" class="name-requirement-completed">Contains at least 2 characters</li>
+                        <li id="check-chars" class="name-requirement-completed">Contains only letters and dashes</li>
+                        <li id="check-first" class="name-requirement-completed">The first character is a capital letter
+                        </li>
+                        <li id="check-last" class="name-requirement-completed">The last character is a letter</li>
+                    </ul>
+                    <div id="player-name-form-container-buttons">
+                        <button type="button" id="btn-cancel" class="button btn-passive">Cancel</button>
+                        <button type="submit" id="btn-confirm" class="button btn-active">Confirm</button>
+                    </div>
+                </form>
             </div>
             <button id="btn-start-new-game" class="button btn-active">Start New Game</button>
         </section>

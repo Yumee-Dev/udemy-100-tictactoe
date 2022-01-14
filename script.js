@@ -2,6 +2,7 @@ const backdrop = document.getElementById('backdrop');
 const playerNames = [document.getElementById('player1-name'), document.getElementById('player2-name')];
 const playerEditNames = [document.getElementById('player1-edit-name'), document.getElementById('player2-edit-name')];
 const playerNameForm = document.getElementById('player-name-form');
+const formPlayerNameForm = document.querySelector('#player-name-form form');
 const fPlayerName = document.getElementById('f-player-name');
 const checkLength = document.getElementById('check-length');
 const checkChars = document.getElementById('check-chars');
@@ -31,7 +32,7 @@ backdrop.addEventListener('click', (event) => btnCancel.click());
 
 for (let i = 0; i < 2; i++) {
     playerEditNames[i].addEventListener('click', (event) => {
-        editedPlayer = i;
+        editedPlayer = +event.target.dataset.playerid;
         playerNameForm.style.display = 'flex';
         backdrop.style.display = 'block';
         fPlayerName.value = playerNames[i].textContent;
@@ -81,14 +82,15 @@ btnCancel.addEventListener('click', (event) => {
     backdrop.style.display = 'none';
 });
 
-btnConfirm.addEventListener('click', (event) => {
-    if (/^[A-Z][a-zA-Z -]*[a-zA-Z]$/.test(fPlayerName.value.trim())) {
-        playerNames[editedPlayer].textContent = fPlayerName.value.trim();
-        sPlayerNames[editedPlayer] = fPlayerName.value.trim();
+formPlayerNameForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const enteredPlayerName = formData.get('player-name').trim();
+    if (/^[A-Z][a-zA-Z -]*[a-zA-Z]$/.test(enteredPlayerName)) {
+        playerNames[editedPlayer].textContent = enteredPlayerName;
+        sPlayerNames[editedPlayer] = enteredPlayerName;
         playerNameForm.style.display = 'none';
         backdrop.style.display = 'none';
-    } else {
-        fPlayerName.classList.add('invalid-value');
     }
 });
 
