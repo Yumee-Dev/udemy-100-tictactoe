@@ -109,41 +109,44 @@ btnStartNewGame.addEventListener('click', (event) => {
     playerTurnName.textContent = sPlayerNames[activePlayer - 1];
 });
 
+function checkForGameOver() {
+    for (let i = 0; i < 3; i++) {
+        if (gameFieldTiles[i][0].textContent == gameFieldTiles[i][1].textContent &&
+            gameFieldTiles[i][1].textContent == gameFieldTiles[i][2].textContent &&
+            gameFieldTiles[i][0].textContent != '') {
+            isGameOver = true;
+        }
+        if (gameFieldTiles[0][i].textContent == gameFieldTiles[1][i].textContent &&
+            gameFieldTiles[1][i].textContent == gameFieldTiles[2][i].textContent &&
+            gameFieldTiles[0][i].textContent != '') {
+            isGameOver = true;
+        }
+        if (gameFieldTiles[0][0].textContent == gameFieldTiles[1][1].textContent &&
+            gameFieldTiles[1][1].textContent == gameFieldTiles[2][2].textContent &&
+            gameFieldTiles[0][0].textContent != '') {
+            isGameOver = true;
+        }
+        if (gameFieldTiles[0][2].textContent == gameFieldTiles[1][1].textContent &&
+            gameFieldTiles[1][1].textContent == gameFieldTiles[2][0].textContent &&
+            gameFieldTiles[0][2].textContent != '') {
+            isGameOver = true;
+        }
+        const reducer = (previous, current) => previous && current.textContent;
+        const reducerArr = (previous, currentArr) => previous && currentArr.reduce(reducer, true);
+        if (!isGameOver && gameFieldTiles.reduce(reducerArr, true)) {
+            isGameOver = true;
+            activePlayer = 0;
+        }
+    }
+}
+
 for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
         gameFieldTiles[i][j].addEventListener('click', (event) => {
             if (gameFieldTiles[i][j].textContent == '' && !isGameOver) {
                 activePlayer == 1 ? gameFieldTiles[i][j].textContent = 'X' : gameFieldTiles[i][j].textContent = 'O';
                 gameFieldTiles[i][j].classList.add('checked-tile');
-                // checking for game over
-                for (let i = 0; i < 3; i++) {
-                    if (gameFieldTiles[i][0].textContent == gameFieldTiles[i][1].textContent &&
-                        gameFieldTiles[i][1].textContent == gameFieldTiles[i][2].textContent &&
-                        gameFieldTiles[i][0].textContent != '') {
-                        isGameOver = true;
-                    }
-                    if (gameFieldTiles[0][i].textContent == gameFieldTiles[1][i].textContent &&
-                        gameFieldTiles[1][i].textContent == gameFieldTiles[2][i].textContent &&
-                        gameFieldTiles[0][i].textContent != '') {
-                        isGameOver = true;
-                    }
-                    if (gameFieldTiles[0][0].textContent == gameFieldTiles[1][1].textContent &&
-                        gameFieldTiles[1][1].textContent == gameFieldTiles[2][2].textContent &&
-                        gameFieldTiles[0][0].textContent != '') {
-                        isGameOver = true;
-                    }
-                    if (gameFieldTiles[0][2].textContent == gameFieldTiles[1][1].textContent &&
-                        gameFieldTiles[1][1].textContent == gameFieldTiles[2][0].textContent &&
-                        gameFieldTiles[0][2].textContent != '') {
-                        isGameOver = true;
-                    }
-                    const reducer = (previous, current) => previous && current.textContent;
-                    const reducerArr = (previous, currentArr) => previous && currentArr.reduce(reducer, true);
-                    if (gameFieldTiles.reduce(reducerArr, true)) {
-                        isGameOver = true;
-                        activePlayer = 0;
-                    }
-                }
+                checkForGameOver();
                 // displaying game over block or starting next turn
                 if (isGameOver) {
                     gameOver.style.display = 'block';
