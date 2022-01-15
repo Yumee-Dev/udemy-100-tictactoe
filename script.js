@@ -91,6 +91,7 @@ formPlayerNameForm.addEventListener('submit', (event) => {
         sPlayerNames[editedPlayer] = enteredPlayerName;
         playerNameForm.style.display = 'none';
         backdrop.style.display = 'none';
+        playerTurnName.textContent = sPlayerNames[activePlayer - 1];
     }
 });
 
